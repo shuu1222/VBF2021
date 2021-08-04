@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ヴァーチャルビアフェスティバル　2021</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style-fukidashi.css">
+	<link rel="stylesheet" type="text/css" media="all" href="css/beer.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+
+</head>
+
+<body>
+
+	<div id="container" v-scope @mounted="mounted">
+
+		<header>
+			<h1 id="logo"><a href="index.html"><img src="images/logo.png"></a></h1>
+		</header>
+
+		<!--PC用（821px以上端末）メニュー-->
+		<nav id="menubar" class="nav-fix-pos">
+			<ul>
+				<li><a href="index.html">ホーム</a></li>
+				<li><a href="about.html">バーチャルビアフェスティバルについて</a></li>
+				<li><a href="menu.html">当日のタイムテーブル</a></li>
+				<li><a href="recruit.html">おすすめビール</a></li>
+			</ul>
+		</nav>
+		<!--小さい端末用（820px以下端末）メニュー-->
+		<nav id="menubar-s">
+			<ul>
+				<li><a href="index.html">ホーム</a></li>
+				<li><a href="about.html">バーチャルビアフェスティバルについて</a></li>
+				<li><a href="menu.html">当日のタイムテーブル</a></li>
+				<li><a href="recruit.html">おすすめビール</a></li>
+			</ul>
+		</nav>
+
+		<div id="contents">
+
+			<section class="bg1">
+
+				<h2 class="img"><img src="images/img1.png" alt="About"><span></span></h2>
+
+				<h2>ビール紹介</h2>
+				<!-- {{ categoryList }} -->
+
+				<article class="post">
+
+					<!-- ! ビール紹介 -->
+					<div v-for="(item, index) in beerList">
+						<div @click="changeView(index)">
+						</div>
+					</div>
+					<div v-for="item in beerList">
+						<div v-show="item.view">
+							<div class="beer-title-wrapper">
+								<titles class="beer-title">{{item.name}}</titles>
+								<button class="beer-tag" :class="item.categoryCode">{{item.categoryName}}</button>
+								<span class="beer-purchase">
+									購入場所：<a :href="item.link" target=”_blank”>{{item.shopName}}</a>
+								</span>
+							</div>
+							<div class="beer-description-wrapper">
+								<img :src="`images/banners/${item.imageName}`" lazy alt="" class="beer-image" />
+								<div class="beer-chart-wrapper">
+									<!-- びあへるんヴァイツェンのグラフ -->
+									<canvas class='beer-chart-canvas' :id="item.canvasId"></canvas>
+								</div>
+								<div class="beer-description">
+									<p class="beer-description-title" v-text="item.title">
+									</p>
+									<p class="beer-description-text" v-text="item.description">
+									</p>
+									<p class="beer-food">
+										おすすめのおつまみ：<BR>
+										{{item.food}}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+			</section>
+			<!--/.bg1-->
+
+		</div>
+		<!--/#contents-->
+
+		<p id="pagetop"><a href="#">↑</a></p>
+
+		<footer>
+
+			<div id="footer-left">
+
+				<h3>ヴァーチャルビアフェス</h3>
+				<p>昨年の写真<br>
+					<img src="images/dummy_map_main.jpg" alt=""></p>
+
+			</div>
+			<!--/#fooer-left-->
+
+			<div id="footer-right">
+
+				<p id="footer-logo"><img src="images/footer_logo.png"></p>
+				<p>お問い合わせは以下<Br>
+					公式ツイッターより<Br>
+					お願いいたします。</p>
+
+				<p id="icon">
+					<a href="#"><img src="images/icon_twitter.png" alt="Twitter"></a>
+				</p>
+
+			</div>
+			<!--/#fooer-right-->
+
+			<div id="copyright">
+				<small></small>
+				<span class="pr"></span>
+			</div>
+			<!--/#copyright-->
+
+		</footer>
+	</div>
+	<!--/#container-->
+
+	<!--メニュー開閉ボタン-->
+	<div id="menubar_hdr" class="close"></div>
+	<script type="module">
+		import { createApp } from 'https://unpkg.com/petite-vue?module'
+	createApp({
+		// exposed to all expressions
+		count: 0,
+		beerList: [{
+		name:"キャスティールバリスタ・チョコレート",
+		category: "strong-dark",
+		categoryCode: "strong-dark",
+		categoryName: "Strong Dark",
+		shopName: "BELGIAN BEER JAPAN",
+		link: "https://www.belgianbeer.co.jp/products/detail.php?product_id=221",
+		title:  `驚くほどにチョコレート
+		『Barista Chocolate Quad』 `,
+		description: `厚みのある濃厚な口当たりと飲みやすいまろやかな香り
+		まるでチョコレートを飲んでいるかのようなベルギーの特別なビールです
+		今まで飲んでみたチョコレートビールはチョコの香りがしなかった？
+		キャスティールバリスタ・チョコレートはそんなあなたも満足させるような
+		しっかりとチョコレートのような香りを感じさせる一杯です。`
+		,
+		food: "ナッツ、生チョコ、レバーパテなど",
+		view: true,
+		imageName:"barista.png",
+		ver:2,
+		canvasId:"Barista"
+		},
+		{
+		name: "松江ビアへるん　ヴァイツェン",
+		categoryCode: "weizen",
+		categoryName: "Weizen",
+		shopName: "松江地ビールビアへるん オンラインショップ",
+		link: "http://shimanebeerh.free.makeshop.jp/",
+		title: ` バナナフルーティ！日本一濃厚を目指す小麦ビール
+		『松江ビアへるん　ヴァイツェン』`,
+		description: ` アゴ出汁や濃厚な醤油を使う「しまね県」の食にあわせて造り上げた香り濃厚！味わい濃厚なヴァイツェン。
+		ビールの香りの中にフェノールという醤油に必ず含まれる香り成分があり醤油との相性が良いので和食におすすめのビールです。
+		ドイツ発祥の黄白色の小麦ビール。
+		小麦麦芽ならではのフルーティな薫りと、クリーミーな泡立ちが特徴。`
+		,
+		food: "ナッツ、生チョコ、レバーパテなど",
+		view: false,
+		imageName:"heln_weiz.png",
+		ver:1,
+		canvasId:"helnWeiz"
+		},
+		{
+		name: "ロシュフォール10",
+		categoryCode: "trappist",
+		categoryName: "Trappist",
+		shopName: "BELGIAN BEER JAPAN",
+		link: "https://www.belgianbeer.co.jp/products/detail.php?product_id=146",
+		title: ` 世界に8ヵ所しかないトラピスト醸造所の1つで作られる
+		『Rochefort10』`,
+		description: ` 驚くほどに濃厚な口当たりと
+		ドライフルーツのような濃さと複雑な味わい。　
+		アルコール度数はなんと11.3％　ベルギービールに初めて触れる方は
+		これがビールだといわれなければ気が付かないかもしれません。
+		甘味と強いコクの味わいはアルコールの強さを感じさせません。
+		冷やし過ぎず、ワイングラスまたは専用グラスで飲むのがおすすめ
+		`
+		,
+		food: "ドライフルーツ、生チョコなど",
+		view: true,
+		imageName:"Rochefort10.png",
+		ver:2,
+		canvasId:"rochefort"
+		},
+		{
+		name: "夏の気まぐれ 2021",
+		categoryCode: "ipa",
+		categoryName: "IPA",
+		shopName: "京都醸造株式会社",
+		link: "https://kyotobrewing.com/products/natsu-no-kimagure-2021",
+		title: ` 季節限定気まぐれシリーズ
+		『Natsu no Kimagure 2021』`,
+		description: ` トロピカルフルーティーなホップの香りが爽やかなセッションIPA
+		アルコール度数も4.5％に抑えられており飲みやすいIPA
+		フルーティーで甘めな香りのホップを使用しており、よりコクのある風味です。
+		甘い香りとは対象に飲み口は瑞々しくキレがあり、まさに夏にぴったりのセッションIPAです
+		`
+		,
+		food: "チーズ系の料理、エスニック料理など",
+		view: true,
+		imageName:"kimagure.png",
+		ver:2,
+		canvasId:"kimagure"
+		},
+		{
+		name: "横浜ラガー",
+		categoryCode: "ipl",
+		categoryName: "IPL",
+		shopName: "横浜ビール　通販サイト",
+		link: "https://www.yokohamabeer.shop/items/39968313",
+		title: ` 横浜ビールで一番の人気
+		『YOKOHAMA LAGER』`,
+		description: ` 横浜ビールと言えばこれ！というような代表的なビールです
+		ラガーの特徴であるスッキリとした飲み口と柑橘系ホップの爽やかな香りが特徴
+		クラフトビールは好きだがごくごく飲めるビールが飲みたいという方に最適
+		1杯目から最後の一杯まですべてが完結する飽きの来ない一杯。
+		`
+		,
+		food: "揚げ物、ポテトフリットなど",
+		view: true,
+		imageName:"yokohama.png",
+		ver:2,
+		canvasId:"yokohama_l"
+		},
+		{
+		name: "パウラーナー サルバトール",
+		categoryCode: "bock",
+		categoryName: "Bock",
+		shopName: "楽天",
+		link: "https://item.rakuten.co.jp/yamaya-shop/4066600611349/",
+		title: ` 世界のビールセンターと呼ばれる名醸造所が作る
+		『PAULANER Salvator』`,
+		description: `300年以上の歴史を持つパウラーナ醸造所が最初に醸造したといわれるビール
+		麦芽が濃く、通常のビールに比べてかなり濃厚。　ドッペルボックの
+		修道院で断食期間の食事替わりに飲まれていたといわれるビール
+		マイルドな香りとモルトの甘味、チョコレートのようなコクのあるびーるです。
+		瓶底には酵母が残っているので飲む際に軽く瓶を回すようにして酵母を拡散するのが通の飲み方。
+		`
+		,
+		food: "ジャークチキン、ソーセージなど",
+		view: true,
+		imageName:"salvator.png",
+		ver:2,
+		canvasId:"p_bock"
+		},
+		{
+		name: "軽井沢エール・エクセラン",
+		categoryCode: "golden-ale",
+		categoryName: "Golden Ale",
+		shopName: "軽井沢ブルワリー株式会社",
+		link: "https://brewery.co.jp/product/karuizawa-ale/",
+		title: ` エールビールの傑作
+		『軽井沢エール　EXCELLENT』`,
+		description: `魅惑のゴールドの光沢、軽井沢の冷涼名水で仕上げた爽快で飲みやすいエール
+		低音の0～5℃ではまるでラガーのようなキレのある爽やかな味わい
+		10℃でエールらしいフルーティーな風味になり1つのビールで2度も楽しめます。
+		秋の来ない味わいでどんな料理にもベストマッチです。s
+		`
+		,
+		food: "焼肉、揚げ物、焼き鳥など",
+		view: true,
+		imageName:"karuizawa.png",
+		ver:2,
+		canvasId:"karuizawa_e"
+		},
+		{
+		name: "黄桜 LUCKY CAT",
+		categoryCode: "whitee",
+		categoryName: "White",
+		shopName: "楽天",
+		link: "https://item.rakuten.co.jp/premoa/4901410090734/?scid=s_kwa_pla_unpaid_110626",
+		title: ` 「幸運」が私のそばにいつもある、私の「相棒」
+		『LUCKY CAT』`,
+		description: `京都の名水で造られるラッキー
+		素晴らしい原材料で造られるラッキー
+		腕利きのブルワーに造られるラッキー
+		いろんなラッキーとの出会いから生まれました。
+		味わいはホワイトエールらしいふんわりと軽い口当たりと
+		スパイスにゆずと山椒を使用したジャパニーズスタイルなベルジアンホワイトな風味
+		ホップはザーツを使用しており、正統派なホップの香り
+		ビールが得意ではない方でもスパイスと小麦のおかげか比較的飲みやすく感じるかもしれません。
+		`
+		,
+		food: "フライドポテト、スパイスの効いた料理など",
+		view: true,
+		imageName:"lucky.png",
+		ver:2,
+		canvasId:"lucky_cat"
+		},
+		{
+		name: "ハイネケン",
+		categoryCode: "pilsner",
+		categoryName: "Pilsner",
+		shopName: "楽天",
+		link: "https://item.rakuten.co.jp/yamaya-shop/4901411021928/?scid=s_kwa_pla_unpaid_110626",
+		title: ` 世界のどこに行っても飲める確かな一杯
+		『Heineken』`,
+		description: `148年以上にもわたる麦芽と品質へのこだわりから生まれた確かな一杯
+		世界中から受け入れられるハイネケンは世界で最もよく選ばれるビールの1つと言えるでしょう。
+		爽やかな飲み口とフルーティな風味が絶妙なバランスです。
+		`
+		,
+		food: "肉料理、エスニック料理など",
+		view: true,
+		imageName:"heineken.png",
+		ver:2,
+		canvasId:"heineken"
+		},
+	],
+		filters: [],
+		// getters
+		// beerListのCategoryから重複を取り除く処理
+		get categoryList(){
+			return this.beerList.filter((item, index, self) =>{
+				return self.findIndex(e => e.categoryName === item.categoryName) === index;
+			}).map((filteredItem)=> filteredItem.categoryName)
+		},
+		// methods
+		changeView(index) {
+			this.beerList[index].view = !this.beerList[index].view
+		},
+		mounted() {
+			console.log(`I'm mounted!`)
+		},
+	}).mount()
+	// ここからVueの外側（Canvasを動かす処理）
+	const canvasIds = ["Barista", "helnWeiz", "rochefort", "kimagure", "yokohama_l", "p_bock", "karuizawa_e", "lucky_cat",
+	"heineken"]
+	// グラフを認識するID<canvas id="ここの値をグラフ数に応じて入れる">
+		// 各ビールのグラフデータ
+		const beerData = {
+			datasets: [
+			{
+			label: "Kasteel Barista Chocolate Quad",
+			data: [1, 6, 5, 2, 6, 7], // パラメータの値　左からホップ感, 甘味, 苦み, キレ, 酸味, ボディ
+			borderColor: "#94933B"
+			},
+			{
+			label: "松江ビアへるん　ヴァイツェン",
+			data: [1, 6, 2, 2, 5, 9],
+			borderColor: "#94933B"
+			},
+			{
+			label: "Rochefort10",
+			data: [3, 9, 4, 2, 3, 10],
+			borderColor: "#94933B"
+			},
+			{
+			label: "Natsu no Kimagure 2021",
+			data: [9, 2, 7, 8, 3, 3],
+			borderColor: "#94933B"
+			},
+			{
+			label: "YOKOHAMA LAGER",
+			data: [6, 2, 6, 9, 3, 3],
+			borderColor: "#94933B"
+			},
+			{
+			label: "PAULANER Salvato",
+			data: [3, 7, 4, 4, 5, 6],
+			borderColor: "#94933B"
+			},
+			{
+			label: "軽井沢エール　EXCELLENT",
+			data: [5, 3, 5, 9, 4, 4], // パラメータの値　左からホップ感, 甘味, 苦み, キレ, 酸味, ボディ
+			borderColor: "#94933B"
+			},
+			{
+			label: "黄桜 LUCKY CAT",
+			data: [4, 5, 3, 4, 5, 5],
+			borderColor: "#94933B"
+			},
+			{
+			label: "HEINEKEN",
+			data: [3, 4, 3, 8, 4, 3],
+			borderColor: "#94933B"
+			},
+		],
+	};
+	// チャートを生成する処理
+	const createNewChart = (canvasId, datasets) => {
+		const ctx = document.getElementById(canvasId);
+		const radarCharts = new Chart(ctx, {
+			type: "radar",
+			data: {
+				labels: ["ホップ感", "甘味", "苦み", "キレ", "酸味", "ボディ"], // Ｘ軸のラベル
+				datasets: datasets
+			},
+			options: {
+				scale: {
+					ticks: {
+						suggestedMin: 0, //グラフの最小表示値
+						suggestedMax: 10, //グラフの最大表示値
+						// fontSize: 16, // 目盛り数字の大きさ
+						stepSize: 2 //目盛の間隔
+					},
+				},
+				maintainAspectRatio: false,
+				legend: {
+					display: false // 凡例の表示
+				},
+			},
+		});
+	}
+	// ここで処理を実行する（canvasIdsの中身の数分だけチャートが生成される）
+	for (let index = 0; index < canvasIds.length; index++) {
+		createNewChart(canvasIds[index], [beerData.datasets[index]])
+	}
+
+	// スタイルのID一覧
+	const styleList = ["ipa", "pilsner", "b-white", "stout", "weizen", "red", "lambic", "bock", "strong"]
+	// スタイル絞り込みボタンをクリックした際の処理
+	const filterSelectedStyles = (style) => {
+		if (style === "show-all") {
+			for (let index2 = 0; index2 < styleList.length; index2++) {
+				document.getElementById(styleList[index2]).style.display = "block"
+			}
+		} else {
+			const element = document.getElementById(style);
+			element.style.display = "block";
+			for (let index = 0; index < styleList.length; index++) {
+				if (style != styleList[index]) {
+					document.getElementById(styleList[index]).style.display = "none"
+				}
+			}
+		}
+	}
+</script>
+
+</body>
+
+</html>

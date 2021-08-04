@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ヴァーチャルビアフェスティバル　2021</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-fukidashi.css">
+<script src="js/openclose.js"></script>
+<script src="js/fixmenu.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/scroll.js"></script>
+</head>
+
+<body>
+
+<div id="container">
+
+<header>
+<h1 id="logo"><a href="index.html"><img src="images/logo.png"></a></h1>
+</header>
+
+<!--PC用（821px以上端末）メニュー-->
+<nav id="menubar" class="nav-fix-pos">
+<ul>
+<li><a href="index.html">ホーム</a></li>
+<li><a href="about.html">バーチャルビアフェスティバルについて</a></li>
+<li><a href="menu.html">当日のタイムテーブル</a></li>
+<li><a href="recruit.html">おすすめビール</a></li>
+</ul>
+</nav>
+<!--小さい端末用（820px以下端末）メニュー-->
+<nav id="menubar-s">
+<ul>
+<li><a href="index.html">ホーム</a></li>
+<li><a href="about.html">バーチャルビアフェスティバルについて</a></li>
+<li><a href="menu.html">当日のタイムテーブル</a></li>
+<li><a href="recruit.html">おすすめビール</a></li>
+</ul>
+</nav>
+
+<div id="contents">
+
+<section class="bg1">
+
+<h2 class="img"><img src="images/img1.png" alt="About"><span></span></h2>
+
+<h2>TIME TABLE</h2>
+
+<center><table border="0" width="300"style="font-size: 20pt">
+                        <tr>
+                        <td>20:30</td>
+                        <td align="center">開場</td>
+                        </tr>
+                        <tr>
+                        <td>20:50</td>
+                        <td align="center">乾杯</td>
+                        </tr>
+                         <tr>
+                        <td>　</td>
+                        <td>　</td>
+                        </tr>
+                        <tr>
+                        <td>21:00</td>
+                        <td align="center">HOSHI</td>
+                        </tr>
+                        <tr>
+                        <td>22:00</td>
+                        <td align="center">KAMOI</td>
+                        </tr> 
+                        <tr>
+                        <td>23:00</td>
+                        <td align="center">NAKUMO</td>
+                        </tr>
+                        <tr>
+                        <td>24:00</td>
+                        <td align="center">OYASUMI-SAN</td>
+                        </tr> 
+                        <tr>
+                        <td>25:00</td>
+                        <td align="center">TEJA</td>
+                        </tr> 
+</table></center>
+
+</section>
+<!--/.bg1-->
+
+<section class="bg2">
+
+<h2 class="img"><img src="images/img1.png"><span></span></h2>
+
+<h2>DJ</h2>
+
+<center><table border="0" width="800" style="color:#FFFFFF">
+    <tr>
+      <td><img src="images/banners/nakumo.png" width="300" align="middle"></td>
+      <td align="left"><b>NAKUMO</b><br><Br>音楽をツマミに酒を飲みたい</td>
+    </tr>
+    <tr>
+      <td><img src="images/banners/kamoi.png" width="300" align="middle"></td>
+      <td align="left"><b>KAMOI</b><br><br>四つ打ちが好き。オタク。</td>
+    </tr>
+        <tr>
+      <td><img src="images/banners/nakumo.png" width="300" align="middle"></td>
+      <td align="left"><b>NAKUMO</b><br><Br>音楽をツマミに酒を飲みたい</td>
+    </tr>
+    <tr>
+      <td><img src="images/banners/kamoi.png" width="300" align="middle"></td>
+      <td align="left"><b>KAMOI</b><br><br>四つ打ちが好き。オタク。</td>
+    </tr>
+        <tr>
+      <td><img src="images/banners/nakumo.png" width="300" align="middle"></td>
+      <td align="left"><b>NAKUMO</b><br><Br>音楽をツマミに酒を飲みたい</td>
+    </tr>
+  </table></center>
+</section>
+<!--/.bg4-->
+
+</div>
+<!--/#contents-->
+
+<p id="pagetop"><a href="#">↑</a></p>
+
+<footer>
+
+<div id="footer-left">
+
+<h3>ヴァーチャルビアフェス</h3>
+<p>昨年の写真<br>
+<img src="images/dummy_map_main.jpg" alt=""></p>
+
+</div>
+<!--/#fooer-left-->
+
+<div id="footer-right">
+
+<p id="footer-logo"><img src="images/footer_logo.png"></p>
+<p>お問い合わせは以下<Br>
+公式ツイッターより<Br>
+お願いいたします。</p>
+
+<p id="icon">
+<a href="#"><img src="images/icon_twitter.png" alt="Twitter"></a>
+</p>
+
+</div>
+<!--/#fooer-right-->
+
+<div id="copyright">
+<small></small>
+<span class="pr"></span>
+</div>
+<!--/#copyright-->
+
+</footer>
+
+</div>
+<!--/#container-->
+
+<!--メニュー開閉ボタン-->
+<div id="menubar_hdr" class="close"></div>
+<!--メニューの開閉処理条件設定　820px以下-->
+<script type="text/javascript">
+if (OCwindowWidth() <= 820) {
+	open_close("menubar_hdr", "menubar-s");
+}
+</script>
+
+<script src="js/jquery.inview.js"></script>
+<script src="js/jquery.inview_set.js"></script>
+
+</body>
+</html>

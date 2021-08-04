@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ヴァーチャルビアフェスティバル　2021</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style-fukidashi.css">
+	<script src="js/openclose.js"></script>
+	<script src="js/fixmenu.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/scroll.js"></script>
+</head>
+
+<body id="top">
+
+	<div id="container">
+
+		<header>
+			<h1 id="logo"><a href="index.html"><img src="images/logo_top.png"></a></h1>
+			<!--トップページ専用（ふきだし）メニュー-->
+			<nav>
+				<ul>
+					<li id="menu1"><a href="about.html"><img src="images/menu1.png" alt="バーチャルビアフェスティバルについて"></a></li>
+					<li id="menu2"><a href="menu.html"><img src="images/menu2.png" alt="当日のタイムテーブル"></a></li>
+					<li id="menu3"><a href="beer.html"><img src="images/menu3.png" alt="おすすめビール"></a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<!--PC用（821px以上端末）メニュー-->
+		<nav id="menubar" class="nav-fix-pos">
+			<ul>
+				<li><a href="index.html">ホーム</a></li>
+				<li><a href="about.html">バーチャルビアフェスティバルについて</a></li>
+				<li><a href="menu.html">当日のタイムテーブル</a></li>
+				<li><a href="beer.html">おすすめビール</a></li>
+			</ul>
+		</nav>
+		<!--小さい端末用（820px以下端末）メニュー-->
+		<nav id="menubar-s">
+			<ul>
+				<li><a href="index.html">ホーム</a></li>
+				<li><a href="about.html">バーチャルビアフェスティバルについて</a></li>
+				<li><a href="menu.html">当日のタイムテーブル</a></li>
+				<li><a href="beer.html">おすすめビール</a></li>
+			</ul>
+		</nav>
+
+		<div id="contents">
+
+			<section class="bg1">
+
+				<h2 class="img"><img src="images/img1.png"><span></span></h2>
+				<center><img src="images/nittei.png"></center>
+				<p>
+
+			</section>
+			<!--/.bg1-->
+
+
+		</div>
+		<!--/#contents-->
+
+		<p id="pagetop"><a href="#">↑</a></p>
+
+		<footer>
+
+			<div id="footer-left">
+
+				<h3>ヴァーチャルビアフェス</h3>
+				<p>昨年の写真<br>
+					<img src="images/dummy_map_main.jpg" alt=""></p>
+
+			</div>
+			<!--/#fooer-left-->
+
+			<div id="footer-right">
+
+				<p id="footer-logo"><img src="images/footer_logo.png"></p>
+				<p>お問い合わせは以下<Br>
+					公式ツイッターより<Br>
+					お願いいたします。</p>
+
+				<p id="icon">
+					<a href="#"><img src="images/icon_twitter.png" alt="Twitter"></a>
+				</p>
+
+			</div>
+			<!--/#fooer-right-->
+
+			<div id="copyright">
+				<small></small>
+				<span class="pr"></span>
+			</div>
+			<!--/#copyright-->
+
+		</footer>
+
+	</div>
+	<!--/#container-->
+
+	<!--メニュー開閉ボタン-->
+	<div id="menubar_hdr" class="close"></div>
+	<!--メニューの開閉処理条件設定　820px以下-->
+	<script type="text/javascript">
+		if (OCwindowWidth() <= 820) {
+			open_close("menubar_hdr", "menubar-s");
+		}
+	</script>
+
+
+</body>
+
+</html>
