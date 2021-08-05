@@ -61,7 +61,7 @@
 					<div v-for="item in beerList">
 						<div v-show="item.view">
 							<div class="beer-title-wrapper">
-								<titles class="beer-title">{{item.name}}</titles>
+								<titles class="beer-title">{{item.name}}{{` (${item.brewery})`}}</titles>
 								<button class="beer-tag" :class="item.categoryCode">{{item.categoryName}}</button>
 								<span class="beer-purchase">
 									購入場所：<a :href="item.link" target=”_blank”>{{item.shopName}}</a>
@@ -71,7 +71,7 @@
 								<img :src="`images/banners/${item.imageName}`" lazy alt="" class="beer-image" />
 								<div class="beer-chart-wrapper">
 									<!-- グラフの描画 -->
-									<canvas class='beer-chart-canvas' :id="item.canvasId"></canvas>
+									<canvas " class='beer-chart-canvas' :id=" item.canvasId"></canvas>
 								</div>
 								<div class="beer-description">
 									<p class="beer-description-title" v-text="item.title">
@@ -86,7 +86,6 @@
 							</div>
 						</div>
 					</div>
-
 			</section>
 			<!--/.bg1-->
 
@@ -142,6 +141,7 @@
 		category: "strong-dark",
 		categoryCode: "strong-dark",
 		categoryName: "Strong Dark",
+		brewery: "ヴァン・ホンスブルック醸造所",
 		shopName: "BELGIAN BEER JAPAN",
 		link: "https://www.belgianbeer.co.jp/products/detail.php?product_id=221",
 		title:  `驚くほどにチョコレート
@@ -182,6 +182,7 @@
 		categoryCode: "trappist",
 		categoryName: "Trappist",
 		shopName: "BELGIAN BEER JAPAN",
+		brewery: "サン・レミ修道院",
 		link: "https://www.belgianbeer.co.jp/products/detail.php?product_id=146",
 		title: ` 世界に8ヵ所しかない
 		トラピスト醸造所の1つで作られる
@@ -205,6 +206,7 @@
 		categoryCode: "ipa",
 		categoryName: "IPA",
 		shopName: "京都醸造株式会社",
+		brewery: "京都醸造",
 		link: "https://kyotobrewing.com/products/natsu-no-kimagure-2021",
 		title: ` 季節限定気まぐれシリーズ
 		『Natsu no Kimagure 2021』`,
@@ -225,6 +227,7 @@
 		categoryCode: "ipl",
 		categoryName: "IPL",
 		shopName: "横浜ビール　通販サイト",
+		brewery: "横浜ビール",
 		link: "https://www.yokohamabeer.shop/items/39968313",
 		title: ` 横浜ビールで一番の人気
 		『YOKOHAMA LAGER』`,
@@ -245,6 +248,7 @@
 		categoryCode: "bock",
 		categoryName: "Bock",
 		shopName: "楽天",
+		brewery: "パウラーナ醸造所",
 		link: "https://item.rakuten.co.jp/yamaya-shop/4066600611349/",
 		title: ` 世界のビールセンターと呼ばれる名醸造所が作る
 		『PAULANER Salvator』`,
@@ -266,6 +270,7 @@
 		categoryCode: "golden-ale",
 		categoryName: "Golden Ale",
 		shopName: "軽井沢ブルワリー株式会社",
+		brewery: "軽井沢ブルワリー",
 		link: "https://brewery.co.jp/product/karuizawa-ale/",
 		title: ` エールビールの傑作
 		『軽井沢エール　EXCELLENT』`,
@@ -286,6 +291,7 @@
 		categoryCode: "whitee",
 		categoryName: "White",
 		shopName: "楽天",
+		brewery: "黄桜",
 		link: "https://item.rakuten.co.jp/premoa/4901410090734/?scid=s_kwa_pla_unpaid_110626",
 		title: ` 「幸運」が私のそばにいつもある、私の「相棒」
 		『LUCKY CAT』`,
@@ -310,6 +316,7 @@
 		categoryCode: "pilsner",
 		categoryName: "Pilsner",
 		shopName: "楽天",
+		brewery: "Heineken",
 		link: "https://item.rakuten.co.jp/yamaya-shop/4901411021928/?scid=s_kwa_pla_unpaid_110626",
 		title: ` 世界のどこに行っても飲める確かな一杯
 		『Heineken』`,
@@ -410,7 +417,8 @@
 						suggestedMin: 0, //グラフの最小表示値
 						suggestedMax: 10, //グラフの最大表示値
 						// fontSize: 16, // 目盛り数字の大きさ
-						stepSize: 2 //目盛の間隔
+						stepSize: 2, //目盛の間隔
+						with: 360
 					},
 				},
 				maintainAspectRatio: false,

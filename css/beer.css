@@ -2,7 +2,7 @@
   display: block;
   border-bottom: 1px solid #fff;
   width: 100%;
-  margin: 30px 0 15px 0;
+  margin: 50px 0 15px 0;
   padding-bottom: 10px;
 }
 
@@ -13,7 +13,7 @@
     display: block;
     border-bottom: 1px solid #fff;
     width: 100%;
-    margin: 30px 0 15px 0;
+    margin: 50px 0 15px 0;
     padding-bottom: 25px;
   }
 }
@@ -29,10 +29,9 @@
 }
 
 .beer-title {
-  font-size: large;
+  font-size: 21px;
   color: #696969;
   font-weight: bold;
-  margin-left: 2%;
 }
 
 .beer-purchase {
@@ -52,6 +51,7 @@
   height: auto;
   object-fit: contain;
   margin-right: 3%;
+  margin-left: 4%;
 }
 
 .beer-description-wrapper {
@@ -74,7 +74,8 @@
 }
 
 .beer-chart-wrapper {
-  width: 30%;
+  width: 360px;
+  height: 450px;
   min-height: 300px;
 }
 
@@ -91,6 +92,8 @@
 
 .beer-chart-canvas {
   display: inline-block;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .selectable {
@@ -191,4 +194,59 @@
   font-size: large;
   margin-left: 15px;
   opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+.beer-description-wrapper {
+    display: inline-block;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+.beer-chart-wrapper {
+    width: 100%;
+    min-height: 300px;
+}
+.beer-description {
+    width: 100%;
+    color: black;
+    margin-left: 3%;
+    font-size: large;
+    font-family: "Noto Sans JP", sans-serif !important;
+}
+.beer-image {
+    width: 20%;
+    height: auto;
+    object-fit: contain;
+    margin-right: 3%;
+    margin-bottom: 5%;
+    margin-left: 4%;
+}
+.beer-food {
+    text-align: left;
+    font-size: medium;
+    color: #696969;
+}
+.beer-description-text {
+    word-break: break-all;
+    white-space: pre-line;
+    text-align: left;
+}
+.beer-title-wrapper {
+    display: inline-grid;
+    border-bottom: 1px solid #fff;
+    width: 100%;
+    margin: 50px 0 15px 0;
+    padding-bottom: 25px;
+}
+.beer-purchase {
+    color: #1d005b !important;
+    font-weight: 400;
+    float: right;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    margin-right: 0;
+    border-radius: 4px;
+    background: rgba(145, 120, 5, 0.4);
+}
 }
