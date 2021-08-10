@@ -331,6 +331,48 @@
 		ver:2,
 		canvasId:"heineken"
 		},
+		{
+		name: "おさるIPA",
+		categoryCode: "ipa",
+		categoryName: "IPA",
+		shopName: "箕面ビール",
+		brewery: "箕面ビール",
+		link: "https://store.minoh-beer.jp/products/detail/12",
+		title: ` 絶妙なバランスの無限に飲めるIPA
+		『おさるIPA』`,
+		description: `5種類のアメリカンホップを使用した華やかな香りのIPA
+		爽やかな苦みと爽やかな飲み口でIPAながらも非情に飲みやすく
+		のど越しを感じることの出来る1杯
+		箕面のおさるをモチーフにした可愛いラベルも人気です。
+		`
+		,
+		food: "餃子、角煮など",
+		view: true,
+		imageName:"osaru.png",
+		ver:2,
+		canvasId:"osaru"
+		},
+		{
+		name: "ジューシーIPA",
+		categoryCode: "ipa",
+		categoryName: "IPA",
+		shopName: "カクヤス",
+		brewery: "DHC",
+		link: "https://www.kakuyasu.co.jp/store/commodity/0010/00348025",
+		title: ` 家でくつろぎながら　リーズナブルでおいしいIPA
+		『ジューシーIPA』`,
+		description: `リーズナブルな価格ながらもドライホッピングを2度行っている本格IPA
+		トロピカルなホップの風味　小麦とオーツ麦を使い、ややヘイジーなIPAになっています。
+		IPA特有の苦みはあるが比較的飲みやすい、IPA初心者でも安心して楽しめるいっぱいです。
+		缶のデザインもポップでかわいくパーティに最適な一杯です。
+		`
+		,
+		food: "肉料理、白身魚のフライなど",
+		view: true,
+		imageName:"juicy.png",
+		ver:2,
+		canvasId:"juicy"
+		},
 	],
 		filters: [],
 		// getters
@@ -350,7 +392,7 @@
 	}).mount()
 	// ここからVueの外側（Canvasを動かす処理）
 	const canvasIds = ["Barista", "helnWeiz", "rochefort", "kimagure", "yokohama_l", "p_bock", "karuizawa_e", "lucky_cat",
-	"heineken"]
+	"heineken","osaru", "juicy"]
 	// グラフを認識するID<canvas id="ここの値をグラフ数に応じて入れる">
 		// 各ビールのグラフデータ
 		const beerData = {
@@ -398,6 +440,16 @@
 			{
 			label: "HEINEKEN",
 			data: [3, 4, 3, 8, 4, 3],
+			borderColor: "#94933B"
+			},
+			{
+			label: "おさるIPA",
+			data: [8, 3, 7, 7, 4, 5],
+			borderColor: "#94933B"
+			},
+			{
+			label: "ジューシーIPA",
+			data: [7, 4, 6, 5, 4, 4],
 			borderColor: "#94933B"
 			},
 		],
